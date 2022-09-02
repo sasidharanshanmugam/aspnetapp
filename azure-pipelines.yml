@@ -18,14 +18,6 @@ steps:
     echo See https://aka.ms/yaml
   displayName: 'Run a multi-line script'
 
-- task: dependency-check-build-task@6
-  inputs:
-    projectName: 'Dotnet'
-    scanPath: '$(Build.SourcesDirectory)'
-    format: 
-    reportsDirectory: '$(Build.SourcesDirectory)/sonar/reports/dependency-check'
-    reportFilename: 'dependency-check-report.html'
-
 - task: SonarQubePrepare@5
   inputs:
     SonarQube: 'sonaranalysis'

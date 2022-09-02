@@ -23,7 +23,7 @@ steps:
     projectName: 'Dotnet'
     scanPath: '$(Build.SourcesDirectory)'
     format: 
-    reportsDirectory: '$(Build.SourcesDirectory)/sonar/reports/dependency-check'''
+    reportsDirectory: '$(Build.SourcesDirectory)/sonar/reports/dependency-check'
     reportFilename: 'dependency-check-report.html'
 
 - task: SonarQubePrepare@5

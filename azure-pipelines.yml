@@ -34,5 +34,5 @@ steps:
     script: |
       - $GOPATH/bin/gometalinter.v2 samples/ > gometalinter-report.out || true
       - go test -json > report.json
-       - go test -coverprofile=coverage.out
+      - go test -coverprofile=coverage.out
       - sonar-scanner/bin/sonar-scanner -Dsonar.projectKey=$SONAR_PROJECT -Dsonar.host.url=$SONAR_URL -Dsonar.login=$SONAR_LOGIN

@@ -17,29 +17,4 @@ steps:
     echo Add other tasks to build, test, and deploy your project.
     echo See https://aka.ms/yaml
   displayName: 'Run a multi-line script'
-- task: dependency-check-build-task@6
-  inputs:
-    projectName: 'Dotnet'
-    scanPath: 'Build.SourcesDirectory'
-    excludePath: '$(Build.SourcesDirectory)/sonar/reports/dependency-check'
-    format: 'HTML'
 
-
-- task: SonarQubePrepare@5
-  inputs:
-    SonarQube: 'sonaranalysis'
-    scannerMode: 'CLI'
-    configMode: 'manual'
-    cliProjectKey: 'Dotnet'
-    cliSources: '.'
-- task: SonarQubeAnalyze@5
-- task: SonarQubePublish@5
-  inputs:
-    pollingTimeoutSec: '300'
-- task: CmdLine@2
-  inputs:
-    script: |
-      - $GOPATH/bin/gometalinter.v2 samples/ > gometalinter-report.out || true
-      - go test -json > report.json
-      - go test -coverprofile=coverage.out
-      - sonar-scanner/bin/sonar-scanner -Dsonar.projectKey=$SONAR_PROJECT -Dsonar.host.url=$SONAR_URL -Dsonar.login=$SONAR_LOGIN
